@@ -1,23 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   IOrganizationsRepoData,
   IOrganizationsRepoParams,
   IRepositoryDetail,
   ISearchResults,
   IUserData,
-} from '../interfaces';
-import { APIRoutes } from '../constants';
+} from "../interfaces";
+import { APIRoutes } from "../constants";
 
+const envSource = import.meta.env || process.env;
+const VITE_GIT_TOKEN = envSource.VITE_GIT_TOKEN;
 const instance = axios.create({
   baseURL: APIRoutes.root,
   headers: {
-    Authorization: `Bearer ${import.meta.env.VITE_GIT_TOKEN}`,
+    ...(VITE_GIT_TOKEN && { Authorization: `Bearer ${VITE_GIT_TOKEN}` }),
   },
 });
 
-const getSWRParam = (value: string) => value.split(':')[1];
+const getSWRParam = (value: string) => value.split(":")[1];
 export const setSWRParam = (prefix: string, suffix?: string) =>
-  prefix + ':' + suffix;
+  prefix + ":" + suffix;
 
 // Search repositories by organization
 export const searchOrganizations = async (swrQuery: string) => {
@@ -34,7 +36,7 @@ export const searchOrganizations = async (swrQuery: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error searching organizations:', error);
+    console.error("Error searching organizations:", error);
     return null;
   }
 };
@@ -48,7 +50,7 @@ const formatGitHubQueryParams = ({
   if (search) parts.push(search);
   if (type) parts.push(`type:${type}`);
 
-  return parts.join(' ').trim();
+  return parts.join(" ").trim();
 };
 // Search repositories within an organization based on keywords
 export const searchRepositoriesInOrg = async (
@@ -65,13 +67,13 @@ export const searchRepositoriesInOrg = async (
           page,
           per_page,
           sort,
-          order: sort === 'name' ? 'asc' : 'desc',
+          order: sort === "name" ? "asc" : "desc",
         },
       }
     );
     return response.data; // Assuming the response.data directly contains the array of repositories
   } catch (error) {
-    console.error('Failed to fetch repositories:', error);
+    console.error("Failed to fetch repositories:", error);
     return null;
   }
 };
@@ -90,7 +92,7 @@ export const getRepositoriesByOrg = async (
     );
     return response.data;
   } catch (error) {
-    console.error('Error getting repositories:', error);
+    console.error("Error getting repositories:", error);
     return null;
   }
 };
@@ -103,7 +105,7 @@ export const getRepositoryDetails = async (owner: string, repo: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error fetching repository details:', error);
+    console.error("Error fetching repository details:", error);
     return null;
   }
 };
@@ -116,7 +118,7 @@ export const getUserDetails = async (org: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error fetching user details:', error);
+    console.error("Error fetching user details:", error);
     return null;
   }
 };
