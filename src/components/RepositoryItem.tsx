@@ -50,7 +50,6 @@ export const RepositoryItem = ({
   updated_at,
 }: IRepositoryItemProps) => {
   const { org } = useParams();
-
   return (
     <div className="flex flex-col w-full gap-2" key={id}>
       <p className="text-lg font-semibold text-secondary">
