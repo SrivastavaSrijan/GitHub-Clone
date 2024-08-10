@@ -36,21 +36,21 @@ export interface IOrganizationsRepoParams {
 }
 
 export enum SortOptions {
-  'Last Updated' = '',
-  Name = 'name',
-  Stars = 'stargazers',
+  "Last Updated" = "",
+  Name = "name",
+  Stars = "stargazers",
 }
 
 export enum TypeOptions {
-  All = '',
-  Public = 'public',
-  Private = 'private',
-  Source = 'source',
-  Fork = 'fork',
-  Archived = 'archived',
-  Sponsorable = 'sponsorable',
-  Mirror = 'mirror',
-  Template = 'template',
+  All = "",
+  Public = "public",
+  Private = "private",
+  Source = "source",
+  Fork = "fork",
+  Archived = "archived",
+  Sponsorable = "sponsorable",
+  Mirror = "mirror",
+  Template = "template",
 }
 
 export interface IOrganizationsRepoData {
@@ -290,13 +290,10 @@ export interface IRepositoryDetail {
   watchers: number;
   default_branch: string;
   permissions: Permissions;
-  custom_properties: CustomProperties;
   organization: Organization;
   network_count: number;
   subscribers_count: number;
 }
-
-export interface CustomProperties {}
 
 export interface Organization {
   login: string;

@@ -1,7 +1,7 @@
-import { memo, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useRepositoryQueryParams } from '../hooks';
-import { APIDefaults } from '../constants';
+import { memo, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useRepositoryQueryParams } from "../hooks";
+import { APIDefaults } from "../constants";
 interface IPaginationProps {
   totalPages: number;
 }
@@ -14,7 +14,6 @@ const _Pagination = ({ totalPages }: IPaginationProps) => {
   };
 
   const [, setSearchParams] = useSearchParams();
-
   const handlePageChange = useCallback(
     (selectedPage: number) => () => {
       setSearchParams((prevSearchParams) => ({
@@ -30,7 +29,7 @@ const _Pagination = ({ totalPages }: IPaginationProps) => {
       return [...Array(totalPages).keys()].map((page) => (
         <button
           className={`join-item btn ${
-            page + 1 === currPage ? 'btn-active' : ''
+            page + 1 === currPage ? "btn-active" : ""
           }`}
           onClick={handlePageChange(page + 1)}
           key={page + 1}
@@ -57,7 +56,7 @@ const _Pagination = ({ totalPages }: IPaginationProps) => {
       return sortedPages.map((page, index, array) => (
         <div key={page}>
           <button
-            className={`join-item btn ${page === currPage ? 'btn-active' : ''}`}
+            className={`join-item btn ${page === currPage ? "btn-active" : ""}`}
             onClick={handlePageChange(page)}
           >
             {page}

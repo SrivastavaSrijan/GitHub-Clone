@@ -2,9 +2,9 @@ import {
   LanguageIcon,
   StarIcon,
   ArrowTrendingUpIcon,
-} from '@heroicons/react/16/solid';
-import { Link, useParams } from 'react-router-dom';
-import { RoutesConfig } from '../constants';
+} from "@heroicons/react/16/solid";
+import { Link, useParams } from "react-router-dom";
+import { RoutesConfig } from "../constants";
 
 const RepositoryIconText = ({
   text,
@@ -50,15 +50,16 @@ export const RepositoryItem = ({
   updated_at,
 }: IRepositoryItemProps) => {
   const { org } = useParams();
+
   return (
     <div className="flex flex-col w-full gap-2" key={id}>
       <p className="text-lg font-semibold text-secondary">
-        {' '}
+        {" "}
         <Link
           to={RoutesConfig.REPOSITORY_DETAIL.replace(
-            ':repo',
+            ":repo",
             `${name}`
-          ).replace(':org', org ?? '')}
+          ).replace(":org", org ?? "")}
         >
           {name}
         </Link>
