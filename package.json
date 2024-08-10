@@ -1,5 +1,6 @@
 {
   "name": "github-org-viewer",
+  "packageManager": "npm@10.5.0",
   "version": "0.0.0",
   "private": true,
   "type": "module",
